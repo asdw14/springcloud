@@ -19,24 +19,26 @@ import java.util.List;
  */
 @RestController
 public class DeptConsumerController {
-    private static final String REST_URL = "http://localhost:8001";
+    //private static final String REST_URL_PREFIX = "http://localhost:8001";
+    //Ribbon:我们这里的地址，应该是一个变量，通过服务名来访问
+    private static final String REST_URL_PREFIX = "http://springcloud-provider-dept";
     @Autowired
     RestTemplate template;
 
     @RequestMapping("/consumer/dept/get/{id}")
     public Dept get(@PathVariable Long id){
-        return template.getForObject(REST_URL+"/dept/get/"+ id,Dept.class);
+        return template.getForObject(REST_URL_PREFIX+"/dept/get/"+ id,Dept.class);
     }
 
     @RequestMapping("/consumer/dept/list")
     public List<Dept> queryAll() {
-        List<Dept> depts = template.getForObject(REST_URL + "/dept/list", List.class);
+        List<Dept> depts = template.getForObject(REST_URL_PREFIX + "/dept/list", List.class);
         return depts;
     }
 
     @RequestMapping("/consumer/dept/add")
     public Boolean addDept(String dname) {
-        return template.postForObject(REST_URL+"/dept/add",dname,Boolean.class);
+        return template.postForObject(REST_URL_PREFIX+"/dept/add",dname,Boolean.class);
 
     }
 }
