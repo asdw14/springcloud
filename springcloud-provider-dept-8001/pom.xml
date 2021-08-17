@@ -12,6 +12,18 @@
     <artifactId>springcloud-provider-dept-8001</artifactId>
 
     <dependencies>
+        <!-- 完善监控信息-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!--加入Eureka依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+            <version>1.4.6.RELEASE</version>
+        </dependency>
+
 <!--    自己写的实体类    -->
         <dependency>
             <groupId>com.dizhongdi</groupId>

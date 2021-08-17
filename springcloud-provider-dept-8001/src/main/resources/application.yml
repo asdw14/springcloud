@@ -6,6 +6,8 @@ mybatis:
   type-aliases-package: com.dizhongdi.pojo
   config-location: classpath:myabtis/mybatis-config.xml
   mapper-locations: classpath:myabtis/mapper/*.xml
+
+  #spring的配置
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
@@ -16,4 +18,15 @@ spring:
   application:
     name: springcloud-provider-dept
 
-#spring的配置
+#Eureka的配置，服务注册到哪里
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+  instance:
+    instance-id: springcloud-provider-dept8001
+
+#info配置（就是提示信息，通过actuator监控可以看到）
+info:
+  app.name: dizhongdi-springcloud
+  company.name: www.dizhongdi.com
